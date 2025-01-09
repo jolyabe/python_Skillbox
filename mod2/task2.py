@@ -20,3 +20,4 @@ if __name__ == '__main__':
     mean_size = get_mean_size(lines)
     print(mean_size)
     
+# ls -l | python3 task2.py 

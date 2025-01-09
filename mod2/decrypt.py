@@ -17,3 +17,5 @@ if __name__ == '__main__':
     data: str = sys.stdin.read()
     decryption: str = decrypt(data)
     print(decryption)
+
+# echo "абраа..-кадабра': 'абра-кадабра" | python3 decrypt.py 
