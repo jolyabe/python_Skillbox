@@ -13,7 +13,7 @@ def hello_world_view():
     return f'<h1>Привет, мир!</h1>'
 
 
-@app.route('/cars')
+@app.route('/cars/')
 def cars_view():
     return f'<p>{", ".join(cars)}</p>'
 @app.route('/some/')
