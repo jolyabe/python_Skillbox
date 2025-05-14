@@ -1,7 +1,9 @@
+# -------------------------------------
+# Задача 2. Дешифратор
 import unittest
-from previous_tasks.decrypt import decrypt
+from mod2.decrypt import decrypt
 
-class TestModule2Task4(unittest.TestCase):
+class TestModule2Task3(unittest.TestCase):
 
     def test_one_dot(self):
 
@@ -36,3 +38,5 @@ class TestModule2Task4(unittest.TestCase):
             with self.subTest(code = code):
                 result = decrypt(code)
                 self.assertEqual(decode, result)
+
+# python3 -m unittest mod3.test_task2 -v (cd ..)

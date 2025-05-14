@@ -1,17 +1,20 @@
+# -------------------------------------
+# Задача 1. Хорошего дня!
 import unittest
 from freezegun import freeze_time
-from previous_tasks.hello_world import app
+from mod2.hello_world import app
 
 class TestModule2Task4(unittest.TestCase):
 
-    def setUp(self) -> None:
-
+    @classmethod
+    def setUpClass(cls) -> None:
         app.config['TESTING'] = True
         app.config['DEBUG'] = False
-        self.app = app.test_client()
+        cls.app = app.test_client()
 
-        self.base_url = '/hello-world/'
-        self.username_default = 'username'
+        cls.base_url = '/hello-world/'
+        cls.username_default = 'username'
+
 
     def test_username(self):
 
@@ -95,4 +98,4 @@ class TestModule2Task4(unittest.TestCase):
         response_text = response.data.decode()
         self.assertTrue(correct_greeting in response_text)
 
-# python3 -m unittest test_task1.py -v
+# python3 -m unittest mod3.test_task1 -v (cd ..)

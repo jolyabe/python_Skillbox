@@ -1,6 +1,8 @@
+# -------------------------------------
+# Задача 4. Доверяй, но проверяй
 import unittest
 from freezegun import freeze_time
-from person import Person
+from mod3.person import Person
 
 class TestPersonClass(unittest.TestCase):
 
@@ -40,3 +42,4 @@ class TestPersonClass(unittest.TestCase):
         self.person.set_address('')
         self.assertTrue(self.person.is_homeless())
 
+# python3 -m unittest mod3.test_task4 -v (cd..)
