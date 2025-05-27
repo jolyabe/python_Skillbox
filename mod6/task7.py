@@ -1,20 +1,5 @@
-"""
-Помимо того чтобы логи писать, нужно их ещё и уметь читать,
-иначе мы будем как в известном анекдоте, писателями, а не читателями.
-
-Для вас мы написали простую функцию обхода binary tree по уровням.
-Также в репозитории есть файл с логами, написанными этой программой.
-
-Напишите функцию restore_tree, которая принимает на вход путь до файла с логами
-    и восстанавливать исходное BinaryTree.
-
-Функция должна возвращать корень восстановленного дерева
-
-def restore_tree(path_to_log_file: str) -> BinaryTreeNode:
-    pass
-
-Примечание: гарантируется, что все значения, хранящиеся в бинарном дереве уникальны
-"""
+# -------------------------------------
+# Задача 7. Бинарное дерево логов
 import itertools
 import logging
 import random
@@ -23,7 +8,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 logger = logging.getLogger("tree_walk")
-
 
 @dataclass
 class BinaryTreeNode:
@@ -77,7 +61,6 @@ def restore_tree(path_to_log_file: str) -> BinaryTreeNode:
     node_num = 0
 
     with open(path_to_log_file, 'r', encoding='utf-8') as file:
-
         full_log_list = [line.strip() for line in file.readlines()]
 
     root_node_num = int(full_log_list[0][30:36])
@@ -100,7 +83,6 @@ def restore_tree(path_to_log_file: str) -> BinaryTreeNode:
             binary_tree[node_right_num] = BinaryTreeNode(val=node_right_num)
             binary_tree[node_num].right = binary_tree[node_right_num]
 
-    
     return binary_tree[root_node_num]
 
 if __name__ == "__main__":
@@ -114,4 +96,4 @@ if __name__ == "__main__":
     # walk(root)
 
     root_restored = restore_tree('walk_log_4.txt')
-    print(restore_tree('walk_log_4.txt'))
+    print(root_restored)

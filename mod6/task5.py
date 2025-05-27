@@ -1,9 +1,11 @@
-from datetime import datetime, timedelta
+# -------------------------------------
+# Задача 5. Измерение времени
 import re
+from datetime import datetime
 
 LOG_FILENAME = 'measure_me.log'
 
-def get_measure_me_average_time_delta() -> int:
+def get_measure_me_average_time_delta() -> float:
 
     entry_messages: list[str] = []
     leave_messages: list[str] = []
