@@ -1,9 +1,10 @@
+# -------------------------------------
+# Задача 2. Удалённое исполнение кода
 import subprocess
 import shlex
 from flask import Flask
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
-from wtforms import validators
+from wtforms import StringField, IntegerField, validators
 
 app = Flask(__name__)
 
@@ -51,6 +52,5 @@ def run():
     return f'Invalid input, {form.errors}', 400
 
 if __name__ == '__main__':
-
     app.config["WTF_CSRF_ENABLED"]=False
     app.run(debug=True)

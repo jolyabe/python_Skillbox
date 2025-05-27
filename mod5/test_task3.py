@@ -1,3 +1,5 @@
+# -------------------------------------
+# Задача 3. Заглушка исключений (тестирование)
 import unittest
 from task3 import BlockErrors
 
@@ -17,7 +19,7 @@ class TestTask3BlockErrors(unittest.TestCase):
         try:
             with BlockErrors(errors):
                 a = 1 / 0
-        except:
+        except ZeroDivisionError:
             self.fail()
 
     def test_TypeError_exception(self):
@@ -34,7 +36,7 @@ class TestTask3BlockErrors(unittest.TestCase):
         try:
             with BlockErrors(errors):
                 a = 1 / '0'
-        except:
+        except TypeError:
             self.fail()
 
     def test_Exception_ignore(self):
@@ -43,7 +45,7 @@ class TestTask3BlockErrors(unittest.TestCase):
             err_types = {Exception}
             with BlockErrors(err_types):
                 a = 1 / '0'
-        except:
+        except Exception:
             self.fail()
 
     def test_noBlockErrors(self):
@@ -62,8 +64,7 @@ class TestTask3BlockErrors(unittest.TestCase):
                 inner_err_types = {ZeroDivisionError}
                 with BlockErrors(inner_err_types):
                     a = 1 / '0'
-        except:
-
+        except (ZeroDivisionError, TypeError):
             self.fail()
 
 if __name__ == '__main__':

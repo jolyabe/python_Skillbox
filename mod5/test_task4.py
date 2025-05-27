@@ -1,15 +1,19 @@
+# -------------------------------------
+# Задача 4. Перенаправление вывода (тестирование)
 import unittest
 import os
 from task4 import Redirect
 
-class TestTask3Redirect(unittest.TestCase):
+class TestTask4Redirect(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
 
+        # Примеры текста для потоков вывода и ошибок
         cls.stdout_sample_text = 'Sample stdout text'
         cls.stderr_sample_text = 'Sample stderr text'
 
+        # Файлы для перенаправления потоков вывода и ошибок
         cls.stdout_filename = 'stdout.txt'
         cls.stderr_filename = 'stderr.txt'
 
@@ -18,10 +22,6 @@ class TestTask3Redirect(unittest.TestCase):
 
         try:
             os.remove(cls.stdout_filename)
-        except FileNotFoundError:
-            pass
-
-        try:
             os.remove(cls.stderr_filename)
         except FileNotFoundError:
             pass

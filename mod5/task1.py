@@ -1,42 +1,40 @@
-from flask import Flask
+# -------------------------------------
+# Задача 1. Освобождение порта
 import subprocess
 import os
 import signal
+from flask import Flask
 
 PORT_NUMBER = 5000
 PID_POS = 1
 
 app = Flask(__name__)
 
-@app.route('/action')
-def action():
-    return 'Приложение смогло запуститься на нужном порте!'
+@app.route('/')
+def index():
+    return 'Приложение смогло запуститься на нужном порту!'
 
 def lsof_check(port):
     lsof = subprocess.run(['lsof', '-i', f':{port}'], capture_output=True)
     lsof_output_lines = lsof.stdout.decode().splitlines()[1:]
 
-    return list(lsof_output_lines)
+    return lsof_output_lines
 
 def run_app(port):
 
-    pids = []
     lsof_output_lines = lsof_check(port)
 
     if lsof_output_lines:
         for proc in lsof_output_lines:
-            print(pids)
-            pids.append(int(proc.split()[PID_POS]))
+            pid = int(proc.split()[PID_POS])
+            os.kill(pid, signal.SIGKILL)
 
-        if pids:
-            [os.kill(pid, signal.SIGKILL) for pid in pids]
-
-    # Повторная проверка отсуствия процессов занявших нужный порт
+    # Повторная проверка отсутствия процессов занявших нужный порт
     if not lsof_check(port):
         app.run(port=port)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     run_app(PORT_NUMBER)
 
 # python3 task1.py &> /dev/null < /dev/null &

@@ -1,3 +1,5 @@
+# -------------------------------------
+# Задача 4. Перенаправление вывода
 import sys
 import traceback
 
@@ -27,7 +29,7 @@ class Redirect:
         if exc_type:
             sys.stderr.write(traceback.format_exc())
 
-        # Востанавливаем сохранённые потоки вывода и ошибок
+        # Восстанавливаем сохранённые потоки вывода и ошибок
         sys.stdout = self.base_stdout
         sys.stderr = self.base_stderr
 

@@ -1,12 +1,11 @@
-import sys
-
+# -------------------------------------
+# Задача 1. Освобождение порта (вспомогательная программа)
 from flask import Flask
-
 
 app = Flask(__name__)
 
-@app.route('/some/')
-def some():
+@app.route('/')
+def index():
     return '123'
 
 
